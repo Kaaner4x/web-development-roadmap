@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>This is first heading</h1>
+    <h2>This is second heading</h2>
+    <h3>This is third heading</h3>
+    <h4>This is fourth heading</h4>
+    <h5>This is fifth heading</h5>
+    <h6>This is sixth heading</h6>
+
+    <p>
+        h1 etiketi belgenin veya ana konunun ana başlığıdır.
+    </p>
+
+    <p>
+        h2 etiketi ana bölümlerdir.
+    </p>
+
+    <p>
+        h3 etiketi bölüm altındaki alt konulardır.
+    </p>
+
+    <p>
+        h4 - h6 etiketleri ise giderek derinleşen detay kırılımlarıdır.
+    </p>
+
+    <p>
+        display: block; özelliği ile tüm başlık etiketleri blok seviyesinde elemanlardır. Bu nedenle her başlık etiketi
+        bir alt satırdan başlar ve bir alt satırda biter.
+    </p>
+
+    <p>
+        font-weight: bold; özelliği ile tüm başlık etiketleri kalın yazı tipine sahiptir.
+    </p>
+
+    <p>
+        margin-block-start: 0.67em; ve margin-block-end: 0.67em; özellikleri ile tüm başlık etiketlerinin üst ve alt
+        kenar boşlukları vardır.
+    </p>
+
+    <p>
+        em ismi geleneksel matbaacılık ve tipografi tarihine dayanır. Metal döküm harf kalıplarında büyük "M" harfi
+        alfabedeki en geniş harf olduğu için, bir yazı tipinin o anki temel genişlik ve yükseklik standardı olarak büyük
+        "M" harfinin boyutu (Em-square) referans alınırdı.
+    </p>
+
+    <p>
+        em ismi geleneksel olarak "elementin kendi yazı boyutu" anlamına gelir. Bu nedenle, bir başlık etiketinin yazı
+        boyutu 2em ise, bu başlık etiketinin yazı boyutu, o başlık etiketinin içinde bulunduğu elementin yazı boyutunun
+        2 katıdır.
+    </p>
+
+    <p>
+        Sabit terimler ekranda her zaman aynı boyutta kalırken em göreceli bir çarpandır.
+        Kural: 1em geçerli elemanın yazı boyutuna eşittir. Örnek: 16px yazı boyutu olan bir elementin içinde 2em yazı
+        boyutu olan bir başlık etiketi varsa, bu başlık etiketinin yazı boyutu 32px olur.
+    </p>
+
+    <p>
+        Göreceli yazı boyutu (em birimi) ile tüm başlık etiketlerinin yazı boyutları farklıdır. h1 etiketi en büyük yazı
+        boyutuna sahiptir ve h6 etiketi en küçük yazı boyutuna sahiptir.
+    </p>
+
+    <p>
+        em biriminin avantajı, yazı boyutunun göreceli olarak ayarlanabilmesidir. Örneğin, bir başlık etiketinin yazı
+        boyutu 2em ise, bu başlık etiketinin yazı boyutu, o başlık etiketinin içinde bulunduğu elementin yazı boyutunun
+        2 katıdır. Bu sayede, sayfanın genel yazı boyutu değiştirildiğinde, başlık etiketlerinin yazı boyutları da
+        otomatik olarak ayarlanır.
+    </p>
+
+    <p>
+        Dikkat edilmesi gereken katlanma durumu vardır. Örneğin, bir başlık etiketinin yazı boyutu 2em ise, bu başlık
+        etiketinin içinde bulunduğu elementin yazı boyutu 16px ise, bu başlık etiketinin yazı boyutu 32px olur. Ancak,
+        bu başlık etiketinin içinde bulunduğu elementin yazı boyutu 20px ise, bu başlık etiketinin yazı boyutu 40px
+        olur. Bu nedenle, em birimi ile yazı boyutları ayarlanırken, katlanma durumuna dikkat edilmelidir.
+    </p>
+
+    <!-- Örnek -->
+     
+    <div style="font-size: 1.2em;"> <!-- 16 * 1.2 = 19.2px -->
+        <div style="font-size: 1.2em;"> <!-- 19.2 * 1.2 = 23px -->
+            <div style="font-size: 1.2em;"> <!-- 23 * 1.2 = 27.6px -->
+                Yazı her iç içe adımda giderek büyür!
+            </div>
+        </div>
+    </div>
+
+    <p>
+        Aria-level özelliği ile tüm başlık etiketlerinin erişilebilirlik seviyesi vardır. h1 etiketi en yüksek
+        erişilebilirlik seviyesine sahiptir ve h6 etiketi en düşük erişilebilirlik seviyesine sahiptir.
+    </p>
+
+    <p>
+        Teknik olarak birden fazla h1 bulunması HTML söz dizimi açısından hatalı değildir. Ancak erişilebilirlik ve SEO
+        açısından bir sayfada yalnızca bir h1 etiketi bulunması önerilir.
+    </p>
+
+    <p>
+        Sık yapılan hatalardan biri, h1 etiketinin birden fazla kez kullanılmasıdır. Bu durum, sayfanın yapısını ve
+        içeriğini anlamayı zorlaştırabilir. Bu nedenle, h1 etiketi yalnızca sayfanın ana başlığı için kullanılmalıdır.
+    </p>
+
+    <p>
+        Sık yapıla hatalardan diğeri, h1 etiketinin yanlış kullanımıdır. Örneğin, h1 etiketi bir başlık yerine bir
+        paragrafın içinde kullanılırsa, bu durum sayfanın yapısını ve içeriğini anlamayı zorlaştırabilir. Bu nedenle, h1
+        etiketi yalnızca başlıklar için kullanılmalıdır.
+    </p>
+
+    <p>
+        Sık yapılan hatalardan bir diğeri, başlık etiketlerinin içine blok seviyesinde elemanlar yerleştirilmesidir.
+        Örneğin, bir h1 etiketi içine bir div etiketi yerleştirilirse, bu durum sayfanın yapısını ve içeriğini anlamayı
+        zorlaştırabilir. Bu nedenle, başlık etiketlerinin içine yalnızca metin veya satır içi elemanlar
+        yerleştirilmelidir.
+    </p>
+
+    <!-- Ideal bir sayfa yapısı -->
+
+    <body>
+        <header>
+            <h1>Web Geliştirme Yol Haritası</h1> <!-- Sayfanın tek ana başlığı -->
+        </header>
+
+        <main>
+            <section>
+                <h2>1. HTML Temelleri</h2> <!-- Ana Bölüm -->
+
+                <article>
+                    <h3>1.1 Metin Formatlama</h3> <!-- Alt Bölüm -->
+                    <p>Paragraflar ve başlıklar...</p>
+                </article>
+
+                <article>
+                    <h3>1.2 Semantik Etiketler</h3>
+                    <p>Section, article, aside kullanımı...</p>
+                </article>
+            </section>
+
+            <section>
+                <h2>2. CSS Temelleri</h2> <!-- Diğer Ana Bölüm -->
+                <p>Stil kuralları...</p>
+            </section>
+        </main>
+    </body>
+
+</body>
+
+</html>
