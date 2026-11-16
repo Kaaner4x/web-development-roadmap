@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 &lt;a&gt; (Anchor / Bağlantı) Etiketi Kapsamlı Rehberi</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #2980b9;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: #16a085;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+
+        code {
+            background-color: #f1f5f9;
+            color: #e11d48;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .note-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .warning-box {
+            background-color: #fff7ed;
+            border-left: 4px solid #f97316;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .danger-box {
+            background-color: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        kbd {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 3px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            color: #334155;
+            display: inline-block;
+            font-size: 0.85em;
+            font-weight: 600;
+            line-height: 1;
+            padding: 2px 5px;
+            white-space: nowrap;
+        }
+
+        .demo-card {
+            border: 1px solid #cbd5e1;
+            padding: 15px;
+            border-radius: 6px;
+            display: inline-block;
+            text-decoration: none;
+            color: inherit;
+            background-color: #fafafa;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <hgroup>
+            <h1>HTML5 &lt;a&gt; (Anchor / Bağlantı) Etiketi Kapsamlı Rehberi</h1>
+            <p>Hipermetin Mimarisi, Nitelikler, Güvenlik, Erişilebilirlik ve En İyi Pratikler</p>
+        </hgroup>
+    </header>
+
+    <main>
+        <section id="kavram">
+            <h2>1. Kökeni ve Temel Kavram (Neden &quot;a&quot;?)</h2>
+            <p>
+                <code>&lt;a&gt;</code> harfi İngilizce <strong>Anchor (Çapa / Demir atmak)</strong> kelimesinin kısaltmasıdır.
+                Web'in mucidi Tim Berners-Lee, belgeleri birbirine bağlayan köprüleri bir geminin demir atmasına benzetmiş ve
+                bu adı vermiştir.
+            </p>
+            <p>
+                İnternetin temel taşı olan <strong>Hypertext (Hipermetin)</strong> sistemi, sayfaların ve belgelerin
+                bu etiket üzerinden birbirine bağlanması sayesinde çalışır.
+            </p>
+        </section>
+
+        <section id="href-turleri">
+            <h2>2. `href` Niteliği (Hypertext REFerence) ve Bağlantı Türleri</h2>
+            <p>
+                <code>href</code>, bağlantının hedef adresini belirtir. Bir <code>&lt;a&gt;</code> etiketinde <code>href</code>
+                yoksa, o eleman tıklanamaz ve yalnızca bir yer tutucu (placeholder) durumundadır.
+            </p>
+
+            <h3>A. Mutlak URL (Absolute URL)</h3>
+            <p>Protokol (<code>https://</code>) ve alan adı içeren tam adreslerdir:</p>
+            <pre><code>&lt;a href="https://developer.mozilla.org"&gt;MDN Web Docs&lt;/a&gt;</code></pre>
+
+            <h3>B. Göreceli URL (Relative URL)</h3>
+            <p>Projenin kendi dosya sistemi içerisindeki göreceli yollardır:</p>
+            <pre><code>&lt;a href="./heading.html"&gt;Başlıklar Rehberi (Aynı dizin)&lt;/a&gt;
+&lt;a href="../about.html"&gt;Hakkımızda (Bir üst dizin)&lt;/a&gt;
+&lt;a href="/index.html"&gt;Ana Sayfa (Kök dizin)&lt;/a&gt;</code></pre>
+
+            <h3>C. Çapa / Sayfa İçi Bağlantı (Fragment Identifier / Hash Link)</h3>
+            <p>Sayfayı yenilemeden belirli bir <code>id</code>'ye sahip elemana kaydırma yapar:</p>
+            <pre><code>&lt;a href="#guvenlik"&gt;Güvenlik Bölümüne Git&lt;/a&gt;
+&lt;a href="#top"&gt;Sayfanın En Başına Dön&lt;/a&gt; &lt;!-- Tarayıcıda yerleşik kısayoldur --&gt;</code></pre>
+
+            <h3>D. Protokol Tabanlı Bağlantılar</h3>
+            <p>Tarayıcı dışındaki sistem uygulamalarını tetikleyen özel URL protokolleridir:</p>
+            <ul>
+                <li><strong>E-Posta (<code>mailto:</code>):</strong> Varsayılan e-posta uygulamasını açar.
+                    <br><code>&lt;a href="mailto:ornek@eposta.com?subject=Bilgi&amp;body=Merhaba"&gt;E-Posta Gönder&lt;/a&gt;</code>
+                </li>
+                <li><strong>Telefon (<code>tel:</code>):</strong> Mobil cihazlarda veya arama araçlarında numarayı arar.
+                    <br><code>&lt;a href="tel:+905551234567"&gt;+90 555 123 45 67&lt;/a&gt;</code>
+                </li>
+                <li><strong>SMS (<code>sms:</code>):</strong> Mesajlaşma uygulamasını açar.
+                    <br><code>&lt;a href="sms:+905551234567?body=Randevu%20talebi"&gt;SMS Gönder&lt;/a&gt;</code>
+                </li>
+            </ul>
+        </section>
+
+        <section id="target">
+            <h2>3. `target` Niteliği (Bağlantı Nerede Açılacak?)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Değer</th>
+                        <th>Açıklama</th>
+                        <th>Kullanım Amacı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>_self</code></td>
+                        <td>Varsayılan değer. Bağlantıyı aynı sekmede / pencerede açar.</td>
+                        <td>Site içi standart gezinme.</td>
+                    </tr>
+                    <tr>
+                        <td><code>_blank</code></td>
+                        <td>Bağlantıyı yeni bir sekmede veya pencerede açar.</td>
+                        <td>Harici sitelere link verirken veya belge açarken.</td>
+                    </tr>
+                    <tr>
+                        <td><code>_parent</code></td>
+                        <td>Eğer sayfa bir iframe içindeyse, linki doğrudan üst pencerede açar.</td>
+                        <td>İç içe gömülü sayfa yapıları.</td>
+                    </tr>
+                    <tr>
+                        <td><code>_top</code></td>
+                        <td>Tüm iç içe iframe'leri kırarak linki tarayıcının en üst penceresinde açar.</td>
+                        <td>Gömülü yapıdan tamamen çıkış.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="guvenlik">
+            <h2>4. `rel` Niteliği, Güvenlik ve SEO Standartları</h2>
+
+            <div class="danger-box">
+                <p><strong>Kritik Güvenlik Tehdidi: Reverse Tabnabbing</strong></p>
+                <p>
+                    Eğer bir linke <code>target="_blank"</code> verip güvenlik önlemi almazsanız, açılan yeni sayfa 
+                    JavaScript'teki <code>window.opener</code> nesnesi üzerinden <strong>orijinal sayfanızın adresini 
+                    sahte bir sayfaya yönlendirebilir (<code>window.opener.location = 'oltalama-sitesi.com'</code>)</strong>.
+                </p>
+            </div>
+
+            <h3>Güvenlik İkilisi:</h3>
+            <ul>
+                <li><strong><code>rel="noopener"</code>:</strong> Yeni açılan sayfanın <code>window.opener</code> nesnesine erişimini tamamen keser ve belleği izole eder.</li>
+                <li><strong><code>rel="noreferrer"</code>:</strong> Hedef sayfaya <code>Referer</code> HTTP başlığını (kullanıcının hangi sayfadan geldiğini) göndermez. Aynı zamanda <code>noopener</code> özelliğini de otomatik olarak kapsar.</li>
+            </ul>
+
+            <pre><code>&lt;!-- target="_blank" için altın standart kullanım: --&gt;
+&lt;a href="https://ornek-dis-site.com" target="_blank" rel="noopener noreferrer"&gt;Harici Siteye Git&lt;/a&gt;</code></pre>
+
+            <h3>SEO ve Arama Motoru İlişkileri:</h3>
+            <ul>
+                <li><strong><code>rel="nofollow"</code>:</strong> Arama motorlarına "Bu bağlantıya kefil değilim, sayfamın otoritesini (PageRank) aktarma" der (Örn: yorumlar, güvenilmeyen linkler).</li>
+                <li><strong><code>rel="sponsored"</code>:</strong> Reklam, sponsorluk veya ücretli anlaşmalar içeren tüm ticari bağlantılar için zorunludur.</li>
+                <li><strong><code>rel="ugc"</code>:</strong> (User Generated Content) Forum, blog yorumları gibi ziyaretçilerin girdiği linkler için kullanılır.</li>
+            </ul>
+        </section>
+
+        <section id="diger-nitelikler">
+            <h2>5. Diğer Önemli Nitelikler</h2>
+            <ul>
+                <li><strong><code>download</code>:</strong> Linke tıklandığında sayfanın açılmasını değil, dosyanın indirilmesini sağlar. İsteğe bağlı isim verilebilir:
+                    <br><code>&lt;a href="/dosyalar/rehber.pdf" download="Web_Rehberi.pdf"&gt;PDF İndir&lt;/a&gt;</code>
+                    <br><em>(Not: Güvenlik nedeniyle sadece Same-Origin yani aynı alan adındaki dosyalarda çalışır).</em>
+                </li>
+                <li><strong><code>hreflang</code>:</strong> Hedef sayfanın dilini belirtir (Örn: <code>hreflang="en"</code>).</li>
+                <li><strong><code>type</code>:</strong> Hedef kaynağın MIME türünü belirtir (Örn: <code>type="application/pdf"</code>).</li>
+            </ul>
+        </section>
+
+        <section id="css-lvha">
+            <h2>6. CSS Durumları ve Tarayıcı Stilleri (LVHA Kuralı)</h2>
+            <p>
+                <code>&lt;a&gt;</code> etiketi varsayılan olarak bir <strong>inline (satır içi)</strong> elemandır.
+                CSS'te bağlantı durumları tanımlanırken sıralama hayati önem taşır (**L-V-H-A** kuralı):
+            </p>
+            <ol>
+                <li><strong><code>:link</code>:</strong> Henüz ziyaret edilmemiş bağlantı (Varsayılan: Mavi).</li>
+                <li><strong><code>:visited</code>:</strong> Daha önce tıklanmış/ziyaret edilmiş bağlantı (Varsayılan: Mor).</li>
+                <li><strong><code>:hover</code>:</strong> Fare imleci linkin üzerine geldiği an.</li>
+                <li><strong><code>:active</code>:</strong> Tıklanıp farenin basılı tutulduğu an (Varsayılan: Kırmızı).</li>
+                <li><strong><code>:focus</code> / <code>:focus-visible</code>:</strong> Klavyeden <kbd>Tab</kbd> tuşu ile seçildiği an.</li>
+            </ol>
+
+            <div class="note-box">
+                <p><strong>Gizlilik Notu (History Sniffing):</strong></p>
+                <p>
+                    Kötü niyetli sitelerin kullanıcının tarayıcı geçmişini çalmasını engellemek için tarayıcılar 
+                    <code>:visited</code> seçicisinde yalnızca renk özelliklerine (<code>color</code>, <code>background-color</code> vb.) 
+                    izin verir; boyut veya layout değiştiren stilleri güvenlik sebebiyle engeller.
+                </p>
+            </div>
+        </section>
+
+        <section id="transparent-content">
+            <h2>7. HTML5 &quot;Transparent Content Model&quot; (Kart Bağlantıları)</h2>
+            <p>
+                Eski HTML4 standardında <code>&lt;a&gt;</code> içine blok eleman koymak yasaktı. HTML5 ile bu kural kalktı. 
+                Artık bir kartın tamamını tıklanabilir yapmak için <code>&lt;a&gt;</code> içine blok elemanlar konulabilir:
+            </p>
+            <pre><code>&lt;a href="/kurslar/html" class="demo-card"&gt;
+    &lt;article&gt;
+        &lt;h3&gt;İleri Düzey HTML5 Eğitimi&lt;/h3&gt;
+        &lt;p&gt;Semantik web ve erişilebilirlik standartları üzerine kapsamlı rehber.&lt;/p&gt;
+    &lt;/article&gt;
+&lt;/a&gt;</code></pre>
+
+            <div class="danger-box">
+                <p><strong>Yasak Kural (Interactive Nesting):</strong></p>
+                <p>
+                    Bir <code>&lt;a&gt;</code> etiketinin içerisine kesinlikle başka bir <code>&lt;a&gt;</code>, 
+                    <code>&lt;button&gt;</code> veya <code>&lt;input&gt;</code> gibi tıklanabilir eleman yerleştirilemez. 
+                    Bu DOM ağacını bozar ve erişilebilirlik standartlarına aykırıdır.
+                </p>
+            </div>
+        </section>
+
+        <section id="link-vs-button">
+            <h2>8. `&lt;a&gt;` (Link) ve `&lt;button&gt;` (Buton) Arasındaki Fark</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Özellik</th>
+                        <th><code>&lt;a&gt;</code> (Link)</th>
+                        <th><code>&lt;button&gt;</code> (Buton)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Amacı</strong></td>
+                        <td><strong>Navigasyon:</strong> Kullanıcıyı bir sayfaya veya kaynağa taşır.</td>
+                        <td><strong>Eylem (Action):</strong> Sayfada bir işlem tetikler (modal açma, form gönderme vb.).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>URL Değişimi</strong></td>
+                        <td>Tarayıcının adres çubuğundaki URL'i günceller.</td>
+                        <td>Genellikle URL'i değiştirmez (JavaScript çalıştırır).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Klavye Erişimi</strong></td>
+                        <td><kbd>Enter</kbd> tuşu ile tetiklenir.</td>
+                        <td>Hem <kbd>Enter</kbd> hem de <kbd>Space</kbd> (Boşluk) tuşları ile tetiklenir.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="a11y">
+            <h2>9. Erişilebilirlik (A11Y) En İyi Pratikleri</h2>
+            <ul>
+                <li>
+                    <strong>Anlamlı Link Metinleri:</strong> 
+                    "Buraya tıklayın", "Daha fazla" gibi belirsiz ifadeler yerine linkin nereye gittiğini açıklayan metinler yazılmalıdır.
+                    <br>❌ <em>Hatalı:</em> <code>&lt;a href="/rapor.pdf"&gt;Tıklayın&lt;/a&gt;</code>
+                    <br>✅ <em>Doğru:</em> <code>&lt;a href="/rapor.pdf"&gt;2026 Web Raporunu İndirin (PDF)&lt;/a&gt;</code>
+                </li>
+                <li>
+                    <strong>Yeni Sekme İpucu:</strong> 
+                    <code>target="_blank"</code> kullanıldığında ekran okuyucu kullanıcıları için yeni sekmede açılacağı belirtilmelidir.
+                </li>
+            </ul>
+        </section>
+    </main>
+
+</body>
+
+</html>
