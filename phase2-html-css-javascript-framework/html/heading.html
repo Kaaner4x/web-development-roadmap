@@ -4,151 +4,402 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H Etiketleri</title>
+    <title>HTML5 Başlık (Heading) Etiketleri Kapsamlı Rehberi</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #2980b9;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: #16a085;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+
+        code {
+            background-color: #f1f5f9;
+            color: #e11d48;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .note-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .warning-box {
+            background-color: #fff7ed;
+            border-left: 4px solid #f97316;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .danger-box {
+            background-color: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        kbd {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 3px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            color: #334155;
+            display: inline-block;
+            font-size: 0.85em;
+            font-weight: 600;
+            line-height: 1;
+            padding: 2px 5px;
+            white-space: nowrap;
+        }
+
+        .demo-headings {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .demo-headings h1,
+        .demo-headings h2,
+        .demo-headings h3,
+        .demo-headings h4,
+        .demo-headings h5,
+        .demo-headings h6 {
+            margin: 10px 0;
+            border: none;
+            padding: 0;
+        }
+
+        .compounding-demo {
+            background-color: #f8fafc;
+            border-left: 3px solid #3b82f6;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Bu birinci başlıktır</h1>
-    <h2>Bu ikinci başlıktır</h2>
-    <h3>Bu üçüncü başlıktır</h3>
-    <h4>Bu dördüncü başlıktır</h4>
-    <h5>Bu beşinci başlıktır</h5>
-    <h6>Bu altıncı başlıktır</h6>
+    <header>
+        <hgroup>
+            <h1>HTML5 Başlık (Heading) Etiketleri Kapsamlı Rehberi</h1>
+            <p>Hiyerarşi, CSS Tarayıcı Davranışları, `em` Birimi, Erişilebilirlik ve Semantik Mimari</p>
+        </hgroup>
+    </header>
 
-    <p>
-        h1 etiketi belgenin veya ana konunun ana başlığıdır.
-    </p>
-
-    <p>
-        h2 etiketi ana bölümlerdir.
-    </p>
-
-    <p>
-        h3 etiketi bölüm altındaki alt konulardır.
-    </p>
-
-    <p>
-        h4 - h6 etiketleri ise giderek derinleşen detay kırılımlarıdır.
-    </p>
-
-    <p>
-        display: block; özelliği ile tüm başlık etiketleri blok seviyesinde elemanlardır. Bu nedenle her başlık etiketi
-        bir alt satırdan başlar ve bir alt satırda biter.
-    </p>
-
-    <p>
-        font-weight: bold; özelliği ile tüm başlık etiketleri kalın yazı tipine sahiptir.
-    </p>
-
-    <p>
-        margin-block-start: 0.67em; ve margin-block-end: 0.67em; özellikleri ile tüm başlık etiketlerinin üst ve alt
-        kenar boşlukları vardır.
-    </p>
-
-    <p>
-        em ismi geleneksel matbaacılık ve tipografi tarihine dayanır. Metal döküm harf kalıplarında büyük "M" harfi
-        alfabedeki en geniş harf olduğu için, bir yazı tipinin o anki temel genişlik ve yükseklik standardı olarak büyük
-        "M" harfinin boyutu (Em-square) referans alınırdı.
-    </p>
-
-    <p>
-        em ismi geleneksel olarak "elementin kendi yazı boyutu" anlamına gelir. Bu nedenle, bir başlık etiketinin yazı
-        boyutu 2em ise, bu başlık etiketinin yazı boyutu, o başlık etiketinin içinde bulunduğu elementin yazı boyutunun
-        2 katıdır.
-    </p>
-
-    <p>
-        Sabit terimler ekranda her zaman aynı boyutta kalırken em göreceli bir çarpandır.
-        Kural: 1em geçerli elemanın yazı boyutuna eşittir. Örnek: 16px yazı boyutu olan bir elementin içinde 2em yazı
-        boyutu olan bir başlık etiketi varsa, bu başlık etiketinin yazı boyutu 32px olur.
-    </p>
-
-    <p>
-        Göreceli yazı boyutu (em birimi) ile tüm başlık etiketlerinin yazı boyutları farklıdır. h1 etiketi en büyük yazı
-        boyutuna sahiptir ve h6 etiketi en küçük yazı boyutuna sahiptir.
-    </p>
-
-    <p>
-        em biriminin avantajı, yazı boyutunun göreceli olarak ayarlanabilmesidir. Örneğin, bir başlık etiketinin yazı
-        boyutu 2em ise, bu başlık etiketinin yazı boyutu, o başlık etiketinin içinde bulunduğu elementin yazı boyutunun
-        2 katıdır. Bu sayede, sayfanın genel yazı boyutu değiştirildiğinde, başlık etiketlerinin yazı boyutları da
-        otomatik olarak ayarlanır.
-    </p>
-
-    <p>
-        Dikkat edilmesi gereken katlanma durumu vardır. Örneğin, bir başlık etiketinin yazı boyutu 2em ise, bu başlık
-        etiketinin içinde bulunduğu elementin yazı boyutu 16px ise, bu başlık etiketinin yazı boyutu 32px olur. Ancak,
-        bu başlık etiketinin içinde bulunduğu elementin yazı boyutu 20px ise, bu başlık etiketinin yazı boyutu 40px
-        olur. Bu nedenle, em birimi ile yazı boyutları ayarlanırken, katlanma durumuna dikkat edilmelidir.
-    </p>
-
-    <!-- Örnek -->
-     
-    <div style="font-size: 1.2em;"> <!-- 16 * 1.2 = 19.2px -->
-        <div style="font-size: 1.2em;"> <!-- 19.2 * 1.2 = 23px -->
-            <div style="font-size: 1.2em;"> <!-- 23 * 1.2 = 27.6px -->
-                Yazı her iç içe adımda giderek büyür!
+    <main>
+        <section id="canli-ornekler">
+            <h2>1. Başlık Seviyeleri Canlı Görünüm</h2>
+            <div class="demo-headings">
+                <h1>Bu birinci başlıktır (&lt;h1&gt;)</h1>
+                <h2>Bu ikinci başlıktır (&lt;h2&gt;)</h2>
+                <h3>Bu üçüncü başlıktır (&lt;h3&gt;)</h3>
+                <h4>Bu dördüncü başlıktır (&lt;h4&gt;)</h4>
+                <h5>Bu beşinci başlıktır (&lt;h5&gt;)</h5>
+                <h6>Bu altıncı başlıktır (&lt;h6&gt;)</h6>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <p>
-        Aria-level özelliği ile tüm başlık etiketlerinin erişilebilirlik seviyesi vardır. h1 etiketi en yüksek
-        erişilebilirlik seviyesine sahiptir ve h6 etiketi en düşük erişilebilirlik seviyesine sahiptir.
-    </p>
+        <section id="semantik-hiyerarsi">
+            <h2>2. Semantik Hiyerarşi ve Belge İskeleti (Outline)</h2>
+            <p>
+                Başlık etiketleri, bir kitabın içindekiler tablosu gibi sayfanın mantıksal iskeletini oluşturur:
+            </p>
+            <ul>
+                <li><strong><code>&lt;h1&gt;</code>:</strong> Belgenin veya ana konunun en üst düzey ana başlığıdır (Kitabın adı).</li>
+                <li><strong><code>&lt;h2&gt;</code>:</strong> Ana bölümlerdir (Bölüm 1, Bölüm 2).</li>
+                <li><strong><code>&lt;h3&gt;</code>:</strong> İlgili bölüm altındaki alt konulardır (Alt Başlık 1.1, 1.2).</li>
+                <li><strong><code>&lt;h4&gt;</code> - <code>&lt;h6&gt;</code>:</strong> Giderek derinleşen detay kırılımlarıdır.</li>
+            </ul>
 
-    <p>
-        Teknik olarak birden fazla h1 bulunması HTML söz dizimi açısından hatalı değildir. Ancak erişilebilirlik ve SEO
-        açısından bir sayfada yalnızca bir h1 etiketi bulunması önerilir.
-    </p>
+            <div class="warning-box">
+                <p><strong>Önemli Teknik Not (Document Outline Algorithm Efsanesi):</strong></p>
+                <p>
+                    HTML5 ilk çıktığında her <code>&lt;section&gt;</code> veya <code>&lt;article&gt;</code> içine bağımsız bir 
+                    <code>&lt;h1&gt;</code> koyulabileceği ve tarayıcıların bunu otomatik olarak hiyerarşide alt seviyeye çekeceği 
+                    öngörülmüştü. Ancak hiçbir tarayıcı veya ekran okuyucu bu algoritmayı hayata geçirmedi. Bu nedenle modern standartlarda 
+                    <strong>hiyerarşik <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code> sıralaması esastır.</strong>
+                </p>
+            </div>
+        </section>
 
-    <p>
-        Sık yapılan hatalardan biri, h1 etiketinin birden fazla kez kullanılmasıdır. Bu durum, sayfanın yapısını ve
-        içeriğini anlamayı zorlaştırabilir. Bu nedenle, h1 etiketi yalnızca sayfanın ana başlığı için kullanılmalıdır.
-    </p>
+        <section id="tarayici-varsayilanlari">
+            <h2>3. Tarayıcı Varsayılan Stilleri (User-Agent Stylesheet)</h2>
+            <p>
+                Tarayıcılar başlık etiketlerine varsayılan olarak şu özellikleri atar:
+            </p>
+            <ul>
+                <li><strong><code>display: block;</code>:</strong> Tüm başlık etiketleri blok seviyesinde elemanlardır. Bulundukları satırın tamamını kaplarlar; kendilerinden önceki ve sonraki içerikler otomatik olarak alt satıra geçer.</li>
+                <li><strong><code>font-weight: bold;</code>:</strong> Tüm başlık etiketleri varsayılan olarak kalın yazı tipine sahiptir.</li>
+                <li><strong><code>margin-block-start</code> ve <code>margin-block-end</code>:</strong> Başlıkların üst ve alt kenar boşlukları göreceli (relative) olarak hesaplanır.</li>
+            </ul>
 
-    <p>
-        Sık yapıla hatalardan diğeri, h1 etiketinin yanlış kullanımıdır. Örneğin, h1 etiketi bir başlık yerine bir
-        paragrafın içinde kullanılırsa, bu durum sayfanın yapısını ve içeriğini anlamayı zorlaştırabilir. Bu nedenle, h1
-        etiketi yalnızca başlıklar için kullanılmalıdır.
-    </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Etiket</th>
+                        <th>Varsayılan Font Boyutu</th>
+                        <th>Piksel Karşılığı (16px Kök)</th>
+                        <th>Dikey Boşluk (Margin-Block)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>&lt;h1&gt;</code></td>
+                        <td>2em</td>
+                        <td>32px</td>
+                        <td>0.67em (yaklaşık 21.4px)</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;h2&gt;</code></td>
+                        <td>1.5em</td>
+                        <td>24px</td>
+                        <td>0.83em (yaklaşık 20px)</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;h3&gt;</code></td>
+                        <td>1.17em</td>
+                        <td>18.72px</td>
+                        <td>1em (yaklaşık 18.7px)</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;h4&gt;</code></td>
+                        <td>1em</td>
+                        <td>16px (Ana metinle eşit)</td>
+                        <td>1.33em (yaklaşık 21.3px)</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;h5&gt;</code></td>
+                        <td>0.83em</td>
+                        <td>13.28px</td>
+                        <td>1.67em (yaklaşık 22.2px)</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;h6&gt;</code></td>
+                        <td>0.67em</td>
+                        <td>10.72px</td>
+                        <td>2.33em (yaklaşık 25px)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-    <p>
-        Sık yapılan hatalardan bir diğeri, başlık etiketlerinin içine blok seviyesinde elemanlar yerleştirilmesidir.
-        Örneğin, bir h1 etiketi içine bir div etiketi yerleştirilirse, bu durum sayfanın yapısını ve içeriğini anlamayı
-        zorlaştırabilir. Bu nedenle, başlık etiketlerinin içine yalnızca metin veya satır içi elemanlar
-        yerleştirilmelidir.
-    </p>
+        <section id="em-birimi">
+            <h2>4. `em` Ölçü Biriminin Derinlemesine Analizi</h2>
+            <p>
+                Sabit birimler (<code>px</code> gibi) ekranda her zaman aynı boyutta kalırken, <strong><code>em</code> göreceli bir çarpandır</strong>.
+            </p>
 
-    <!-- Ideal bir sayfa yapısı -->
+            <h3>A. Kökeni ve Tarihi</h3>
+            <p>
+                <code>em</code> ismi geleneksel matbaacılık ve tipografi tarihine dayanır. Metal döküm harf kalıplarında büyük "M" harfi 
+                alfabedeki en geniş harf olduğu için, bir yazı tipinin o anki temel genişlik ve yükseklik standardı olarak büyük "M" harfinin 
+                boyutu (<em>Em-square</em>) referans alınırdı.
+            </p>
 
-    <body>
-        <header>
-            <h1>Web Geliştirme Yol Haritası</h1> <!-- Sayfanın tek ana başlığı -->
-        </header>
+            <h3>B. Matematiksel Kuralı</h3>
+            <p>
+                <strong>Kural:</strong> <code>1em</code> = Geçerli ebeveyn elemanın font boyutuna eşittir.
+            </p>
+            <ul>
+                <li>Tarayıcılarda varsayılan kök yazı boyutu <strong>16px</strong>'tir.</li>
+                <li><code>16px</code> temel font boyutuna sahip bir sayfada <code>2em</code> değerindeki <code>&lt;h1&gt;</code>: 
+                    <code>16px * 2 = 32px</code> olur.
+                </li>
+            </ul>
 
-        <main>
-            <section>
-                <h2>1. HTML Temelleri</h2> <!-- Ana Bölüm -->
+            <h3>C. `em` Biriminin Avantajı</h3>
+            <p>
+                Yazı boyutlarının ve kenar boşluklarının göreceli olarak ayarlanabilmesidir. Kullanıcı tarayıcı ayarlarından temel yazı 
+                boyutunu büyüttüğünde veya sayfanın genel font boyutu değiştirildiğinde, tüm başlıklar ve oranlar otomatik olarak uyum sağlar.
+            </p>
 
-                <article>
-                    <h3>1.1 Metin Formatlama</h3> <!-- Alt Bölüm -->
-                    <p>Paragraflar ve başlıklar...</p>
-                </article>
+            <h3>D. Katlanma (Compounding) Etkisi ve Dikkat Edilmesi Gerekenler</h3>
+            <p>
+                <code>em</code> birimi iç içe geçmiş etiketlerde katlanarak büyür. Ebeveyn elemanın font boyutu arttıkça alt elemanın 
+                hesaplanan değeri katlanarak artar:
+            </p>
 
-                <article>
-                    <h3>1.2 Semantik Etiketler</h3>
-                    <p>Section, article, aside kullanımı...</p>
-                </article>
-            </section>
+            <div class="compounding-demo">
+                <div style="font-size: 1.2em;">
+                    1. Seviye: 16px * 1.2 = <strong>19.2px</strong>
+                    <div style="font-size: 1.2em;">
+                        2. Seviye: 19.2px * 1.2 = <strong>23.04px</strong>
+                        <div style="font-size: 1.2em;">
+                            3. Seviye: 23.04px * 1.2 = <strong>27.65px</strong> (Yazı iç içe geçtikçe büyür!)
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <section>
-                <h2>2. CSS Temelleri</h2> <!-- Diğer Ana Bölüm -->
-                <p>Stil kuralları...</p>
-            </section>
-        </main>
-    </body>
+            <pre><code>&lt;div style="font-size: 1.2em;"&gt; &lt;!-- 16 * 1.2 = 19.2px --&gt;
+    &lt;div style="font-size: 1.2em;"&gt; &lt;!-- 19.2 * 1.2 = 23.04px --&gt;
+        &lt;div style="font-size: 1.2em;"&gt; &lt;!-- 23.04 * 1.2 = 27.65px --&gt;
+            Yazı her iç içe adımda katlanarak büyür!
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </section>
+
+        <section id="a11y-aria">
+            <h2>5. Erişilebilirlik (A11Y) ve ARIA Standartları</h2>
+            <p>
+                Görme engelli kullanıcıların kullandığı ekran okuyucular (NVDA, JAWS, VoiceOver), sayfada gezinmek için başlıkları birincil yol haritası olarak kullanır:
+            </p>
+            <ul>
+                <li>Kullanıcılar klavyeden <kbd>H</kbd> tuşuna basarak sayfadaki başlıklar arasında sırayla atlar.</li>
+                <li>Doğrudan belirli bir seviyedeki başlığa gitmek için <kbd>1</kbd> ile <kbd>6</kbd> arasındaki rakam tuşları kullanılır.</li>
+            </ul>
+
+            <div class="note-box">
+                <p><strong>ARIA Eşlemesi:</strong></p>
+                <p>
+                    Tarayıcılar başlık etiketlerine otomatik olarak <code>role="heading"</code> ve seviyelerine göre 
+                    <code>aria-level="1"</code> ile <code>aria-level="6"</code> erişilebilirlik özniteliklerini atar.
+                    <code>&lt;h1&gt;</code> en yüksek seviyeli başlığı, <code>&lt;h6&gt;</code> ise en düşük seviyeli başlığı temsil eder.
+                </p>
+            </div>
+        </section>
+
+        <section id="seo-kurallari">
+            <h2>6. SEO ve Tek `<h1>` İlkesi</h2>
+            <ul>
+                <li>
+                    <strong>Tek <code>&lt;h1&gt;</code> Kuralı:</strong> Teknik olarak bir sayfada birden fazla <code>&lt;h1&gt;</code> 
+                    bulunması HTML sözdizimi açısından hata olmasa da; hem arama motorlarının sayfanın ana odağını net anlaması 
+                    hem de ekran okuyucular için en iyi pratik <strong>sayfa başına yalnızca 1 adet <code>&lt;h1&gt;</code></strong> kullanmaktır.
+                </li>
+                <li>
+                    <strong>İçerik İpuçları:</strong> Arama motoru örümcekleri (Googlebot), sayfanın konusunu kavramak için başlık metinlerine öncelik verir.
+                </li>
+            </ul>
+        </section>
+
+        <section id="hgroup">
+            <h2>7. Başlık Gruplama: `&lt;hgroup&gt;` Etiketi</h2>
+            <p>
+                HTML5'in <code>&lt;hgroup&gt;</code> etiketi, bir başlığı alt başlığı veya sloganıyla sarmalayarak belge iskeletinde gereksiz başlık seviyesi oluşmasını engeller:
+            </p>
+            <pre><code>&lt;hgroup&gt;
+  &lt;h1&gt;Web Geliştirme Yol Haritası&lt;/h1&gt;
+  &lt;p&gt;Temelden İleri Düzeye Modern Web Standartları&lt;/p&gt;
+&lt;/hgroup&gt;</code></pre>
+        </section>
+
+        <section id="anti-patterns">
+            <h2>8. En Sık Yapılan Hatalar (Anti-Patterns)</h2>
+            <ol>
+                <li>
+                    <strong>Görsel Boyut İçin Etiket Seçmek:</strong>
+                    Bir metin küçük görünsün diye <code>&lt;h5&gt;</code> seçilmemelidir. Hiyerarşik konumu neyse o etiket kullanılmalı, boyutu CSS'in <code>font-size</code> özelliği ile ayarlanmalıdır.
+                </li>
+                <li>
+                    <strong>Seviye Atlamak (Skipping Levels):</strong>
+                    <code>&lt;h1&gt;</code>'den hemen sonra <code>&lt;h3&gt;</code> veya <code>&lt;h4&gt;</code>'e geçilmemelidir. Hiyerarşi basamak basamak ilerlemelidir.
+                </li>
+                <li>
+                    <strong>Başlık İçine Blok Eleman Yerleştirmek:</strong>
+                    Başlık etiketleri phrasing (satır içi) içerik barındırmalıdır (<code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>). İçerisine <code>&lt;div&gt;</code> veya <code>&lt;p&gt;</code> yerleştirilmemelidir.
+                </li>
+                <li>
+                    <strong>Başlığı Paragraf Olarak Kullanmak:</strong>
+                    Uzun metinler veya açıklamalar başlık etiketi içine değil, <code>&lt;p&gt;</code> etiketi içine yazılmalıdır.
+                </li>
+            </ol>
+        </section>
+
+        <section id="ideal-mimari">
+            <h2>9. İdeal Semantik Sayfa Mimarisi Örneği</h2>
+            <pre><code>&lt;header&gt;
+  &lt;h1&gt;Web Geliştirme Yol Haritası&lt;/h1&gt; &lt;!-- Sayfanın tek ana başlığı --&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;1. HTML Temelleri&lt;/h2&gt; &lt;!-- Ana Bölüm --&gt;
+
+    &lt;article&gt;
+      &lt;h3&gt;1.1 Metin Formatlama&lt;/h3&gt; &lt;!-- Alt Bölüm --&gt;
+      &lt;p&gt;Paragraflar ve başlıklar...&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;article&gt;
+      &lt;h3&gt;1.2 Semantik Etiketler&lt;/h3&gt;
+      &lt;p&gt;Section, article, aside kullanımı...&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;2. CSS Temelleri&lt;/h2&gt; &lt;!-- Diğer Ana Bölüm --&gt;
+    &lt;p&gt;Stil kuralları...&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+        </section>
+    </main>
 
 </body>
 
