@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 &lt;img&gt; (Görsel) Etiketi ve Medya Mimarisi Kapsamlı Rehberi</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #2980b9;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: #16a085;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+
+        code {
+            background-color: #f1f5f9;
+            color: #e11d48;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .note-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .warning-box {
+            background-color: #fff7ed;
+            border-left: 4px solid #f97316;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .danger-box {
+            background-color: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        kbd {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 3px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            color: #334155;
+            display: inline-block;
+            font-size: 0.85em;
+            font-weight: 600;
+            line-height: 1;
+            padding: 2px 5px;
+            white-space: nowrap;
+        }
+
+        /* Canlı Önizleme ve Demo Kutuları */
+        .demo-container {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .responsive-preview {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+
+        figure {
+            margin: 20px 0;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        figcaption {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #64748b;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .object-fit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .object-fit-card {
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .object-fit-card img {
+            width: 100%;
+            height: 120px;
+            background-color: #334155;
+            border-radius: 4px;
+        }
+
+        .baseline-demo {
+            background-color: #fef08a;
+            border: 2px dashed #ca8a04;
+            padding: 10px;
+            font-size: 1.1em;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <hgroup>
+            <h1>HTML5 &lt;img&gt; (Görsel) Etiketi ve Medya Mimarisi Kapsamlı Rehberi</h1>
+            <p>Replaced Elements, CLS Optimizasyonu, Responsive Görseller (srcset/sizes), &lt;picture&gt;, Lazy Loading ve Erişilebilirlik (a11y)</p>
+        </hgroup>
+    </header>
+
+    <main>
+        <section id="tanim-ve-doga">
+            <h2>1. `&lt;img&gt;` Etiketinin Tanımı ve Anatomik Yapısı</h2>
+            <p>
+                <code>&lt;img&gt;</code> etiketi, web sayfalarına bitmap (JPEG, PNG, WebP, AVIF, GIF) veya vektörel (SVG) 
+                görsel kaynaklarını dahil etmek için kullanılır.
+            </p>
+            <p>
+                HTML doküman hiyerarşisinde <code>&lt;img&gt;</code> etiketi iki temel yapısal özelliğe sahiptir:
+            </p>
+            <ul>
+                <li>
+                    <strong>Void / Self-Closing (Kapanmayan) Eleman:</strong> Kapanış etiketi (<code>&lt;/img&gt;</code>) yoktur 
+                    ve içerisinde alt bir metin ya da çocuk eleman barındıramaz. Tüm verisini nitelikleri (attributes) üzerinden alır.
+                </li>
+                <li>
+                    <strong>Replaced Element (Değiştirilen Eleman):</strong> Görselin boyutları ve görsel içeriği HTML dosyasının 
+                    kendi metin içeriğinden değil, harici bir dosyadan çekilir. Tarayıcının CSS biçimlendirme motoru bu etiketin yerini 
+                    harici kaynaktan gelen piksel matrisi ile doldurur.
+                </li>
+            </ul>
+
+            <div class="note-box">
+                <p><strong>Görsel Önizlemesi (Projedeki Yerel Görsel):</strong></p>
+                <figure>
+                    <img src="./moon-night-sky.jpg" alt="Gece gökyüzünde parlak dolunay ve bulutlar" class="responsive-preview" width="860" height="484">
+                    <figcaption>Şekil 1: Yerel <code>moon-night-sky.jpg</code> dosyasının responsive olarak sayfaya yerleştirilmesi.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="temel-nitelikler">
+            <h2>2. Olmazsa Olmaz İki Temel Nitelik: `src` ve `alt`</h2>
+
+            <h3>A. `src` (Source - Kaynak) Niteliği</h3>
+            <p>
+                Görsel dosyasının dosya yolunu veya internet adresini belirtir:
+            </p>
+            <ul>
+                <li><strong>Göreceli Yol (Relative Path):</strong> Proje klasör yapısına göre belirtilir (Örn: <code>./moon-night-sky.jpg</code> veya <code>../assets/logo.png</code>).</li>
+                <li><strong>Mutlak Yol (Absolute Path):</strong> Protokol ve alan adı içeren tam web adresi (Örn: <code>https://images.unsplash.com/...</code>).</li>
+                <li><strong>Base64 / Data URL:</strong> Küçük ikonlar ve hız optimizasyonu için doğrudan HTML'e gömülen metinsel veri (Örn: <code>src="data:image/svg+xml;base64,..."</code>).</li>
+            </ul>
+
+            <h3>B. `alt` (Alternative Text - Alternatif Metin) ve Altın Kuralları</h3>
+            <p>
+                <code>alt</code> niteliği asla göz ardı edilmemesi gereken kritik bir standarttır. Üç temel amaca hizmet eder:
+            </p>
+            <ol>
+                <li><strong>Erişilebilirlik (Accessibility - a11y):</strong> Görme engelli kullanıcıların ekran okuyucu (screen reader) yazılımları bu metni seslendirir.</li>
+                <li><strong>Ağ / Bağlantı Hataları:</strong> Görsel yüklenemediğinde, silindiğinde veya ağ kesildiğinde kullanıcının karşısına bu açıklama metni çıkar.</li>
+                <li><strong>Arama Motoru Optimizasyonu (SEO):</strong> Arama motoru örümcekleri (Googlebot) görseli pikselleriyle değil, <code>alt</code> metnindeki bağlamla indeksler.</li>
+            </ol>
+
+            <div class="warning-box">
+                <p><strong>Erişilebilirlik İçin `alt` Kullanım Rehberi:</strong></p>
+                <ul>
+                    <li>Gereksiz kelimeler kullanmayın: Ekran okuyucular zaten elemanın görsel olduğunu bilir; <code>alt="Görseli", alt="Fotoğrafı"</code> gibi ifadeler eklemeyin.</li>
+                    <li><strong>Dekoratif Görseller:</strong> Yalnızca görsel süsleme amacıyla konulan arka plan çizgileri veya ikonlar için nitelik tamamen silinmemeli, <strong>boş bırakılmalıdır</strong>: <code>alt=""</code>. Boş <code>alt</code>, ekran okuyucuya "bu bir süstür, kullanıcıyı rahatsız etmeden geç" mesajı verir. <code>alt</code> hiç yazılmazsa ekran okuyucu dosya adını okur (Örn: <code>IMG_20261117_9823.JPG</code>), bu da çok kötü bir kullanıcı deneyimidir.</li>
+                    <li><strong>Link İçi Görseller:</strong> Eğer görsel bir <code>&lt;a&gt;</code> etiketi içerisindeyse ve yanında metin yoksa, <code>alt</code> metni görselin değil, gidilecek linkin hedefini anlatmalıdır (Örn: <code>alt="Ana Sayfaya Git"</code>).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="boyutlandirma-ve-cls">
+            <h2>3. Boyutlandırma, CLS (Cumulative Layout Shift) ve Baseline Boşluğu</h2>
+
+            <h3>A. CLS Önleme ve Modern `width` / `height` Standartları</h3>
+            <p>
+                HTML5'te <code>&lt;img&gt;</code> etiketine her zaman piksel birimi belirtilmeden (sadece sayı olarak) 
+                <code>width</code> ve <code>height</code> nitelikleri verilmelidir:
+            </p>
+            <pre><code>&lt;!-- DOĞRU KULLANIM: Tarayıcı en-boy oranını (aspect-ratio) önceden hesaplar --&gt;
+&lt;img src="moon-night-sky.jpg" alt="Ay ve bulutlar" width="800" height="450"&gt;</code></pre>
+
+            <div class="danger-box">
+                <p><strong>Neden width ve height Vermeliyiz? (Cumulative Layout Shift - CLS)</strong></p>
+                <p>
+                    Görsel yüklenmeden önce tarayıcı onun gerçek boyutunu bilmez. Eğer <code>width</code> ve <code>height</code> 
+                    nitelikleri tanımlanmazsa, tarayıcı görsel için başlangıçta <code>0x0</code> piksel alan ayırır. 
+                    Görsel indirildiği anda sayfa aniden aşağıya doğru zıplar (Layout Shift). 
+                </p>
+                <p>
+                    Boyutlar HTML'e yazıldığında modern tarayıcılar dahili olarak <code>aspect-ratio: width / height;</code> 
+                    kuralını uygular ve görsel inene kadar sayfada tam yer tutucu (placeholder) kutu rezerve eder; böylece sayfa asla kaymaz!
+                </p>
+            </div>
+
+            <h3>B. CSS ile Responsive Yapma ve Baseline (Taban Çizgisi) Boşluğu</h3>
+            <p>
+                <code>&lt;img&gt;</code> varsayılan olarak satır içi (inline) bir eleman gibi metin satırının taban çizgisine (baseline) 
+                oturur. Bu durum görselin altında istenmeyen <strong>3-4 piksellik boşluk</strong> oluşmasına yol açar.
+            </p>
+
+            <div class="baseline-demo">
+                Metin satırı <img src="./moon-night-sky.jpg" alt="Küçük ay" width="40" height="25" style="border:1px solid red;"> Taban çizgisi altındaki boşluğa dikkat edin!
+            </div>
+
+            <p>Bu sorunu çözmek ve görseli tam duyarlı (responsive) hale getirmek için modern web'de kullanılan standart CSS şöyledir:</p>
+            <pre><code>/* Modern Responsive Görsel Reset Kuralı */
+img {
+    max-width: 100%;       /* Ebeveyn kutusundan taşmasını önler */
+    height: auto;          /* Orantısını (aspect ratio) otomatik korur */
+    display: block;        /* Altındaki 4px inline baseline boşluğunu yok eder */
+}</code></pre>
+        </section>
+
+        <section id="performans-optimizasyonlari">
+            <h2>4. Performans ve Yükleme Optimizasyonları</h2>
+            <p>
+                Modern tarayıcılarda görsellerin ağ ve işlemci tüketimini optimize eden 3 güçlü nitelik mevcuttur:
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nitelik</th>
+                        <th>Değerler</th>
+                        <th>Çalışma Prensibi ve Best Practice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>loading</code></td>
+                        <td><code>lazy</code> | <code>eager</code></td>
+                        <td>
+                            <code>loading="lazy"</code>: Kullanıcı görselin bulunduğu alana doğru kaydırma yapana kadar yüklemeyi erteler. Veri ve hız tasarrufu sağlar.<br>
+                            <strong>Kritik Kural:</strong> Sayfanın en üstünde (Above-the-fold) yer alan LCP görseline asla <code>lazy</code> vermeyin!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>decoding</code></td>
+                        <td><code>async</code> | <code>sync</code> | <code>auto</code></td>
+                        <td>
+                            <code>decoding="async"</code>: Görselin piksel matrisine dönüştürülme (decode) işlemini ana iş parçacığından (Main Thread) ayırır. Sayfa kaydırmalarında takılmayı önler.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>fetchpriority</code></td>
+                        <td><code>high</code> | <code>low</code> | <code>auto</code></td>
+                        <td>
+                            <code>fetchpriority="high"</code>: Tarayıcının ağ öncelik kuyruğunda görseli üst sıraya taşır. Sayfanın en büyük görseli (LCP) için idealdir.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pre><code>&lt;!-- Sayfanın en tepesindeki ana afiş (Hero / LCP) görseli için: --&gt;
+&lt;img src="hero.webp" alt="Ana kampanya afişi" width="1200" height="600" fetchpriority="high" loading="eager" decoding="async"&gt;
+
+&lt;!-- Sayfanın alt kısımlarındaki makale görselleri için: --&gt;
+&lt;img src="moon-night-sky.jpg" alt="Gece manzarası" width="800" height="450" loading="lazy" decoding="async"&gt;</code></pre>
+        </section>
+
+        <section id="responsive-images">
+            <h2>5. Duyarlı Görseller: `srcset` ve `sizes`</h2>
+            <p>
+                Mobil cihazdaki bir kullanıcıya 4K çözünürlükte devasa bir görsel sunmak gereksiz veri tüketimidir. 
+                HTML5'in <code>srcset</code> ve <code>sizes</code> ikilisi tarayıcının en doğru boyuttaki görseli seçmesini sağlar.
+            </p>
+
+            <h3>A. Ekran Yoğunluğuna (DPR - Retina) Göre Görsel Sunma</h3>
+            <p>Aynı fiziksel boyuttaki standart (1x) ve yüksek yoğunluklu (2x) ekranlar için:</p>
+            <pre><code>&lt;img src="logo-1x.png" 
+     srcset="logo-1x.png 1x, logo-2x.png 2x, logo-3x.png 3x" 
+     alt="Şirket Logosu" width="150" height="50"&gt;</code></pre>
+
+            <h3>B. Ekran Genişliğine Göre Görsel Sunma (`w` tanımlayıcısı ve `sizes`)</h3>
+            <p>
+                Tarayıcı görseli indirmeden önce ekranın genişliğini ve o görselin CSS ile ekranda kaplayacağı alanı (<code>sizes</code>) 
+                hesaplayarak listedeki en verimli görseli indirir:
+            </p>
+            <pre><code>&lt;img src="moon-small.jpg"
+     srcset="moon-small.jpg 480w,
+             moon-medium.jpg 800w,
+             moon-large.jpg 1200w"
+     sizes="(max-width: 600px) 100vw,
+            (max-width: 1024px) 50vw,
+            800px"
+     alt="Gece gökyüzünde parlayan dolunay"
+     loading="lazy"&gt;</code></pre>
+        </section>
+
+        <section id="picture-etiketi">
+            <h2>6. `&lt;picture&gt;` Elemanı ve Sanat Yönetimi (Art Direction)</h2>
+            <p>
+                <code>&lt;picture&gt;</code> bir sarmalayıcı (wrapper) elemandır. İçerisinde birden fazla <code>&lt;source&gt;</code> 
+                ve en sonda mutlaka bir <code>&lt;img&gt;</code> fallback etiketi barındırır.
+            </p>
+
+            <h3>A. Sanat Yönetimi (Farklı Ekranlara Farklı Kırpılmış Görseller)</h3>
+            <p>
+                Masaüstünde geniş yatay manzara görseli etkileyici dururken, mobilde aynı görsel küçülüp anlamsızlaşabilir. 
+                Mobilde konuya odaklanmış dikey (kare) bir kesit sunmak "Art Direction" olarak adlandırılır:
+            </p>
+            <pre><code>&lt;picture&gt;
+    &lt;!-- Mobilde kare kırpılmış görseli göster --&gt;
+    &lt;source media="(max-width: 640px)" srcset="moon-mobile-square.jpg"&gt;
+    &lt;!-- Tablet ve üzerinde yatay geniş görseli göster --&gt;
+    &lt;source media="(min-width: 641px)" srcset="moon-desktop-wide.jpg"&gt;
+    &lt;!-- Eski tarayıcılar için yedek ve DOM'daki gerçek görsel --&gt;
+    &lt;img src="moon-desktop-wide.jpg" alt="Gece gökyüzünde ay manzarası"&gt;
+&lt;/picture&gt;</code></pre>
+
+            <h3>B. Modern Format Desteği (AVIF &gt; WebP &gt; JPEG Fallback)</h3>
+            <p>
+                Yeni nesil görsel formatları (AVIF ve WebP) yüksek sıkıştırma verimliliği sunar. Tarayıcının desteklediği 
+                en modern formatı sırayla sunmak için <code>type</code> niteliği kullanılır:
+            </p>
+            <pre><code>&lt;picture&gt;
+    &lt;source srcset="image.avif" type="image/avif"&gt;
+    &lt;source srcset="image.webp" type="image/webp"&gt;
+    &lt;img src="image.jpg" alt="Optimize edilmiş ürün fotoğrafı" loading="lazy"&gt;
+&lt;/picture&gt;</code></pre>
+        </section>
+
+        <section id="figure-ve-figcaption">
+            <h2>7. Semantik Gruplama: `&lt;figure&gt;` ve `&lt;figcaption&gt;`</h2>
+            <p>
+                Bir görsel ile ona ait altyazıyı / başlığı semantik olarak ilişkilendirmek için <code>&lt;figure&gt;</code> ve 
+                <code>&lt;figcaption&gt;</code> çifti kullanılır. Bu sayede ekran okuyucular altyazının doğrudan o görsele 
+                ait olduğunu anlar.
+            </p>
+            <pre><code>&lt;figure&gt;
+    &lt;img src="moon-night-sky.jpg" alt="Dolunayın bulutlar arasından doğuşu" width="800" height="450"&gt;
+    &lt;figcaption&gt;Fotoğraf 1.2: Gökyüzü gözleminde dolunay evresi ve ışık kırılmaları.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+        </section>
+
+        <section id="css-object-fit">
+            <h2>8. CSS `object-fit` ve `object-position` ile Kırpma Yönetimi</h2>
+            <p>
+                Görselleri sabit boyutlu kartlar veya profil alanları içine en-boy oranını bozmadan (basıklık veya esneme olmadan) 
+                yerleştirmek için <code>object-fit</code> özelliği kullanılır:
+            </p>
+
+            <div class="object-fit-grid">
+                <div class="object-fit-card">
+                    <img src="./moon-night-sky.jpg" alt="object-fit fill" style="object-fit: fill;">
+                    <p><code>fill</code><br><small>(Varsayılan: Esnetir)</small></p>
+                </div>
+                <div class="object-fit-card">
+                    <img src="./moon-night-sky.jpg" alt="object-fit contain" style="object-fit: contain;">
+                    <p><code>contain</code><br><small>(Sığdırır: Taşmaz)</small></p>
+                </div>
+                <div class="object-fit-card">
+                    <img src="./moon-night-sky.jpg" alt="object-fit cover" style="object-fit: cover;">
+                    <p><code>cover</code><br><small>(Kırpar: Alanı kaplar)</small></p>
+                </div>
+                <div class="object-fit-card">
+                    <img src="./moon-night-sky.jpg" alt="object-fit scale-down" style="object-fit: scale-down;">
+                    <p><code>scale-down</code><br><small>(Küçük olanı seçer)</small></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sik-yapilan-hatalar">
+            <h2>9. Sık Yapılan Hatalar (Anti-Patterns) ve Doğru Yaklaşımlar</h2>
+            <ol>
+                <li>
+                    <strong>`alt` Niteliğini Tamamen Unutmak:</strong> 
+                    <code>&lt;img src="..."&gt;</code> şeklinde <code>alt</code> olmadan bırakmak erişilebilirlik (WCAG) standartlarını doğrudan ihlal eder. Dekoratifse <code>alt=""</code> yazılmalıdır.
+                </li>
+                <li>
+                    <strong>`width` ve `height` Değerlerini Tanımlamamak:</strong> 
+                    Sayfa açılışında CLS (Cumulative Layout Shift) patlamasına yol açar. Mutlaka orijinal oran HTML nitelikleri olarak verilmelidir.
+                </li>
+                <li>
+                    <strong>Sayfanın En Üstündeki Görsele `loading="lazy"` Vermek:</strong> 
+                    Hero/LCP görseline <code>lazy</code> eklemek tarayıcının görseli geç indirmesine sebep olur ve sayfa yükleme hız skorunuzu (Core Web Vitals) düşürür.
+                </li>
+                <li>
+                    <strong>CSS ile Sadece Genişlik Verip Yüksekliği Serbest Bırakmamak:</strong> 
+                    <code>width: 300px;</code> yazılıp <code>height: auto;</code> tanımlanmazsa eski tarayıcılarda görsel basıklaşabilir.
+                </li>
+                <li>
+                    <strong>Görselleri Salt Yazı Barındıran Başlıklar İçin Kullanmak:</strong> 
+                    Tipografik metin yerine görsel içine metin gömmek (Banner resimleri hariç) arama motorlarının metni okuyamamasına ve çeviri araçlarının çalışmamasına neden olur.
+                </li>
+            </ol>
+        </section>
+    </main>
+
+</body>
+
+</html>
